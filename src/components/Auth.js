@@ -8,14 +8,16 @@ const cookies = new Cookies();
 
 const Auth = () => {
 
-    try {
+    
         const signIn = async () => {
+            try { 
             const result = await signInWithPopup(auth, provider)
             cookies.set("auth-token", result.user.refreshToken)
          }
-    }
+    
     catch(err){
         console.log(err)
+    }
     };
     return (
         <div className='bg-slate-400'>
