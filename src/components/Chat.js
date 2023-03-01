@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { addDoc, collection, serverTimestamp, onSnapshot, where } from "firebase/firestore"
 import { auth, db } from "../fb-config"
 
 const Chat = (props) => {
@@ -10,7 +10,10 @@ const Chat = (props) => {
     const messagesColRef = collection(db, "messages");
 
 useEffect(() => {
-
+     const queryMessages = query(messagesColRef, where("room", "===", room));
+onSnapshot(queryMessages, (snapshot) => {
+console.log("new Message just came in!!!")
+})
 }, [])
 
     const handleSubmit = async (e) => {
