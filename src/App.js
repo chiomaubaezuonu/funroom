@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import Auth from './components/Auth'
+import Chat from './components/Chat';
 import Cookies from 'universal-cookie'
 const cookies = new Cookies();
 
@@ -12,11 +13,12 @@ const roomInputRef = useRef();
   if(!isAuth){
     return (
       <div>
-        <Auth />
+        <Auth setIsAuth={setIsAuth} />
       </div>
     )
   }
-  return <div>{room ? <div>Chat</div> : 
+  return <div>{room ? 
+    <Chat room={room} /> : 
   <div>
     <label>Enter room name:</label><br></br>
     <input ref = {roomInputRef} placeholder='room name...' className='border-blue-600' />
