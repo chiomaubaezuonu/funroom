@@ -7,7 +7,12 @@ const Chat = (props) => {
     const { room } = props;
 
     const [newMsg, setNewMsg] = useState("");
-    const messagesColRef = collection(db, "messages")
+    const messagesColRef = collection(db, "messages");
+
+useEffect(() => {
+
+}, [])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (newMsg === "") return;
